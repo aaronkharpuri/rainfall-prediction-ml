@@ -15,17 +15,14 @@ Evaluation — accuracy, confusion matrix, classification report
 Export — model saved as rainfall_prediction_model.pkl
 
 Quick Prediction
-import pickle, pandas as pd
 
+import pickle, pandas as pd
 with open("rainfall_prediction_model.pkl", "rb") as f:
     model_data = pickle.load(f)
-
 model = model_data["model"]
 feature_names = model_data["feature_names"]
-
 input_data = (1015.9, 19.9, 95, 81, 0.0, 40.0, 13.7)
 input_df = pd.DataFrame([input_data], columns=feature_names)
-
 prediction = model.predict(input_df)
 print("Rainfall" if prediction[0] == 1 else "No Rainfall")
 
